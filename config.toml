@@ -1,5 +1,5 @@
 title = "Greetings, Stranger"
-baseURL = "https://han.life/"
+baseURL = "https://www.han.life/"
 tags = ["ops", "blog"]
 langaugeCode = "en-AU"
 config = "config.toml"
