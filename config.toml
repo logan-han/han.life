@@ -1,0 +1,48 @@
+title = "Greetings, Stranger"
+baseURL = "https://han.life/"
+tags = ["ops", "blog"]
+langaugeCode = "en-AU"
+config = "config.toml"
+theme = "pulp"
+
+[params]
+    author = "Logan Han"
+    avatar = "profile.jpg"
+    avatarDescription = "Slytherin!"
+    favicon = "favicon.ico"
+    description = """
+        Just another ops guy in down under.
+    """
+    publicationYear = "2020"
+
+[outputs]
+    section = ["JSON", "HTML"]
+    term = ["JSON", "HTML"]
+
+[[menu.main]]
+    identifier = "blog"
+    # name = "Blog"
+    pre = "<i class='fa fa-book-open fa-lg'></i>"
+    url = "https://blog.han.life"
+    weight = 10
+
+[[menu.main]]
+    identifier = "twitter"
+    # name = "Twitter"
+    pre = "<i class='fab fa-twitter fa-lg'></i>"
+    url = "https://twitter.com/logan_han"
+    weight = 20
+
+[[menu.main]]
+    identifier = "github"
+    # name = "GitHub"
+    pre = "<i class='fab fa-github fa-lg'></i>"
+    url = "https://github.com/logan-han"
+    weight = 30
+
+[[menu.main]]
+    identifier = "email"
+    # name = "Email"
+    pre = "<i class='fa fa-envelope fa-lg'></i>"
+    url = "mailto:logan@this_domain"
+    weight = 40

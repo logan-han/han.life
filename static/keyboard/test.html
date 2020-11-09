@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Ohi - Online hangul input</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="ohi.js"></script>
+
+  <script type="text/javascript">
+    var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+    var uname = escape('Ohi');
+    document.write(unescape("%3Cscript id='log_script' src='" + JsHost + "alee137.weblog.cafe24.com/weblog.js?uid=alee137&uname="+uname+"' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+
+  <script type="text/javascript">
+  <!--
+    function gotoTab(n) {
+        for (i=1; i<=3; i++) {
+            document.getElementById('menu'+i).className = (i==n) ? 'this' : 'menu';
+            document.getElementById('tab'+i).style.height = (i==n) ? '' : '1px';
+            document.getElementById('tab'+i).style.position = (i==n) ? '' : 'absolute';
+            document.getElementById('tab'+i).style.overflow = (i==n) ? 'visible' : 'hidden';
+            document.getElementById('tab'+i).style.visibility = (i==n) ? 'visible' : 'hidden';
+        }
+    }
+
+    function appendChild(parentNode,nodeName,className,innerHTML,width,padding) {
+        var childNode = document.createElement(nodeName);
+        if (className) childNode.className = className;
+        if (innerHTML) childNode.innerHTML = innerHTML;
+        if (width) childNode.style.width = width;
+        if (padding) childNode.style.padding = padding;
+        parentNode.appendChild(childNode);
+        return childNode;
+    }
+
+    function openList() {
+        var code = Array(
+            '','gl','el','nl','no','da','de','lv',
+            'ru','ro','lt','mk','ms','mt','vi','be','bg',
+            'sr','sw','sv','es','sk','sl','ar','is','ht',
+            'ga','af','sq','et','en','uk','cy','yi',
+            'it','id','ja','zh-cn','zh-tw','cs','ca','hr','tl','th',
+            'tr','fa','pt','pl','fr','fi','ko','hu','iw','hi');
+        var lang = Array(
+            '사용안함','갈리시아어','그리스어','네덜란드어','노르웨이어','덴마크어','독일어','라트비아어',
+            '러시아어','루마니아어','리투아니아어','마케도니아어','말레이어','몰타어','베트남어','벨로루시어','불가리아어',
+            '세르비아어','스와힐리어','스웨덴어','스페인어','슬로바키아어','슬로베니아어','아랍어','아이슬란드어','아이티프랑스',
+            '아일랜드어','아프리칸스어','알바니아어','에스토니아어','영어','우크라이나어','웨일즈어','이디시어',
+            '이탈리아어','인도네시아어','일본어','중국어(간체)','중국어(번체)','체코어','카탈로니아어','크로아티아어','타갈로그어','태국어',
+            '터키어','페르시아어','포르투갈어','폴란드어','프랑스어','핀란드어','한국어','헝가리어','히브리어','힌디어');
+
+        var span = document.getElementById('code');
+        var div = document.getElementById('translate');
+        div.style.position = 'relative';
+        div.innerHTML = '';
+        var table = appendChild(div,'table');
+        table.style.margin = '0px 1px';
+        table.style.border = 'solid 1px wheat';
+        var tbody = appendChild(table,'tbody');
+        for (var i=0; i<9; i++) {
+            var tr = appendChild(tbody,'tr');
+            for (var j=0; j<6; j++) {
+                var td = appendChild(tr,'td','langout',lang[i+j*9],'92px');
+                td.title       = code[i+j*9];
+                td.onclick     = function(){selectLang(this.title,this.innerHTML)};
+                td.onmouseover = function(){this.className='langover'}
+                td.onmouseout  = function(){this.className='langout'}
+            }
+        }
+        span.onclick = function(){selectLang(this.title,this.innerHTML)};
+    }
+
+    function selectLang(code,lang) {
+        var span = document.getElementById('code');
+        var div = document.getElementById('translate');
+        span.title = code;
+        if (code) {
+            span.innerHTML = lang;
+            div.style.position = 'relative';
+            div.innerHTML = '<textarea id="translatedText" readonly="readonly" cols="88" rows="5" style="width:580px;height:85px;"></textarea>';
+            if (document.getElementById('inputText').value) googleTranslate();
+        }
+        else {
+            span.innerHTML = '언어선택';
+            div.style.position = 'absolute';
+            div.innerHTML = '';
+        }
+        span.onclick = openList;
+    }
+
+    function translateHandler(response) {
+        var translatedText = document.getElementById('translatedText');
+        translatedText.innerHTML = response.data.translations[0].translatedText;
+        translatedText.scrollTop = translatedText.scrollHeight;
+    }
+
+    function googleTranslate() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBSUbOStfYpNM7VUGYpASzGlIo0jBHfL6o&callback=translateHandler&prettyprint=true&target='+encodeURIComponent(document.getElementById('code').title)+'&q='+encodeURIComponent(document.getElementById('inputText').value);
+        document.body.appendChild(script);
+    }
+
+    function keyUp(e) {
+        var e = e||window.event, f = e.target||e.srcElement;
+        if (f.id=='inputText' && document.getElementById('code').title) {
+            if (!document.getElementById('inputText').value) document.getElementById('translatedText').value = '';
+            else if (e.keyCode==13 || e.keyCode==32 || e.keyCode==188 || e.keyCode==190) googleTranslate();
+        }
+    }
+
+    function viewKeyboard(type) {
+        var rows = document.getElementById('keyboardLayout')
+        rows.style.position = type ? "relative" : "absolute";
+        rows.innerHTML = '';
+
+        if (type) {
+            var ue= Array(
+                    Array('~','!','@','#','$','%','^','&amp;','*','(',')','_','+','Back'),
+                    Array('Tab','Q','W','E','R','T','Y','U','I','O','P','{','}','|'),
+                    Array('Caps','A','S','D','F','G','H','J','K','L',':','"','Enter'),
+                    Array('Shift','Z','X','C','V','B','N','M','&lt;','&gt;','?','Shift'));
+            var de= Array(
+                    Array('` ','1 ','2 ','3 ','4 ','5 ','6 ','7 ','8 ','9 ','0 ','- ','= ','Space'),
+                    Array('','　','　','　','　','　','　','　','　','　','　','[ ','] ','\\ '),
+                    Array('Lock','　','　','　','　','　','　','　','　','　','; ','\' '),
+                    Array('','　','　','　','　','　','　','　',', &nbsp;','. &nbsp;','/ '));
+            var u2= Array(
+                    Array(),
+                    Array('','ㅃ','ㅉ','ㄸ','ㄲ','ㅆ','　','　','　','ㅒ','ㅖ'));
+            var d2= Array(
+                    Array(),
+                    Array('','ㅂ','ㅈ','ㄷ','ㄱ','ㅅ','ㅛ','ㅕ','ㅑ','ㅐ','ㅔ'),
+                    Array('','ㅁ','ㄴ','ㅇ','ㄹ','ㅎ','ㅗ','ㅓ','ㅏ','ㅣ'),
+                    Array('','ㅋ','ㅌ','ㅊ','ㅍ','ㅠ','ㅜ','ㅡ'));
+            var u3= Array(
+                    Array('※','ㄲ','ㄺ','ㅈ','ㄿ','ㄾ','＝','“','”','\'','～',';','+'),
+                    Array('','ㅍ','ㅌ','ㄵ','ㅀ','ㄽ','５','６','７','８','９','％','/','\\'),
+                    Array('','ㄷ','ㄶ','ㄼ','ㄻ','ㅒ','０','１','２','３','４','·'),
+                    Array('','ㅊ','ㅄ','ㅋ','ㄳ','？','-','"',' ',' ','！'));
+            var d3= Array(
+                    Array('*','ㅎ','ㅆ','ㅂ','ㅛ','ㅠ','ㅑ','ㅖ','ㅢ','ㅜ','ㅋ',')','&gt;'),
+                    Array('','ㅅ','ㄹ','ㅕ','ㅐ','ㅓ','ㄹ','ㄷ','ㅁ','ㅊ','ㅍ','(','&lt;',':'),
+                    Array('','ㅇ','ㄴ','ㅣ','ㅏ','ㅡ','ㄴ','ㅇ','ㄱ','ㅈ','ㅂ','ㅌ'),
+                    Array('','ㅁ','ㄱ','ㅔ','ㅗ','ㅜ','ㅅ','ㅎ',',','.','ㅗ'));
+
+            var uh = type==2 ? u2 : type==3 ? u3 : false;
+            var dh = type==2 ? d2 : type==3 ? d3 : false;
+            rows.innerHTML += '<table style="border-collapse:collapse;">';
+            rows.innerHTML += '<tr><td><table><tr id="row0"></tr></table></td></tr>';
+            rows.innerHTML += '<tr><td><table><tr id="row1"></tr></table></td></tr>';
+            rows.innerHTML += '<tr><td><table><tr id="row2"></tr></table></td></tr>';
+            rows.innerHTML += '<tr><td><table><tr id="row3"></tr></table></td></tr>';
+            rows.innerHTML += '</table>';
+
+            for (i=0; ue[i]; i++) {
+                var row = document.getElementById('row'+i);
+
+                for (j=0; ue[i][j]; j++) {
+                    var tdclass = 'e1';
+                    if (dh[i] && dh[i][j]) {
+                        if (dh[i][j].charCodeAt(0)>0x3130) tdclass = (type==2 || j>5) ? 'h3' : 'h1';
+                        if (dh[i][j].charCodeAt(0)>0x314E) tdclass = 'h2';
+                    }
+                    var col = appendChild(row,'td',tdclass,'','31px','1px 1px 1px 4px');
+                    if (ue[i][j]=='Back' || ue[i][j]=='Tab') col.style.width = '54px';
+                    if (ue[i][j]=='Caps' || ue[i][j]=='Enter') col.style.width = '64px';
+                    if (ue[i][j]=='Shift') col.style.width = '84px';
+                    if (ue[i][j]=='Back' || ue[i][j]=='Tab' || ue[i][j]=='Caps' || ue[i][j]=='Enter' || ue[i][j]=='Shift')
+                        col.style.padding = '1px', col.style.textAlign = 'center';
+                    appendChild(col,'span','e1',ue[i][j]+' ');
+                    if (uh[i] && uh[i][j]) appendChild(col,'span','',uh[i][j]);
+                    if (de[i][j]) {
+                        appendChild(col,'br');
+                        appendChild(col,'span','e1',de[i][j]);
+                        if (dh[i] && dh[i][j]) appendChild(col,'span','',dh[i][j]);
+                    }
+                }
+            }
+        }
+    }
+
+    document.onkeyup = keyUp;
+  -->
+  </script>
+
+  <style type="text/css">
+  <!--
+    body { margin: 8pt; }
+    body, th, td, input, textarea { font-family: "Malgun Gothic", "NanumGothic", sans-serif; }
+    span.emph { color: black; }
+    div.title { color: tan; font-weight: bold; font-size: 18pt; line-height: 14pt; padding-top: 2pt; padding-bottom: 6pt; }
+    th, td, input, textarea { font-size: 10pt; }
+    th.menu, th.this, th.none { font-size: 11pt; width: 81px; padding: 1px; }
+    th.menu { cursor: pointer; border: solid 2px oldlace; background-color: snow; }
+    th.this { border: solid 2px wheat; background-color: wheat; }
+    th.none { border: solid 2px white; background-color: white; }
+    td.text { border: solid 2px wheat; background-color: oldlace; }
+    td.langover { cursor: pointer; margin: 0px; padding: 0px 1px; background-color: wheat; }
+    td.langout  { cursor: pointer; margin: 0px; padding: 0px 1px; background-color: oldlace; }
+    td.e1, td.h1, td.h2, td.h3 { font-size: 13px; height: 34px; padding-top:0; padding-bottom:0; border: outset 1px wheat; }
+    td.e1 { background-color: wheat; }
+    td.h1 { background-color: lightgreen; }
+    td.h2 { background-color: lightpink; }
+    td.h3 { background-color: lightblue; }
+    kbd { font-family: "Courier New", monospace; }
+    kbd.status { font-family: "GulimChe", monospace; color: white; background-color: royalblue; }
+    span.e1 { font-family: "Consolas", monospace, sans-serif; color: gray; }
+    span.menu, div.menu, kbd.menu { cursor: pointer; background-color: antiquewhite; }
+    span.over, div.over, kbd.over { cursor: pointer; background-color: burlywood; }
+    input.text, textarea { border: solid 1px wheat; ime-mode: disabled; }
+    form { margin: 0px; padding: 0px; }
+  -->
+  </style>
+</head>
+
+<body onload="document.getElementsByTagName('textarea')[0].focus()">
+  <div class="title">
+    <span class="emph">오</span>라인 <span class="emph">하</span>글 <span class="emph">이</span>력 -
+    <span class="emph">O</span>nline <span class="emph">h</span>angul <span class="emph">i</span>nput
+    <br />ㄴ　　 ㄴ　 ㅂ
+  </div>
+  <table cellspacing="0">
+  <tr>
+    <th class="this" id="menu1" onclick="gotoTab(1)">
+      <div onmouseover="this.className='over'" onmouseout="this.className=''">한글입력</div>
+    </th>
+    <th class="menu" id="menu2" onclick="gotoTab(2)">
+      <div onmouseover="this.className='over'" onmouseout="this.className=''">한글검색</div>
+    </th>
+    <th class="menu" id="menu3" onclick="gotoTab(3)">
+      <div onmouseover="this.className='over'" onmouseout="this.className=''">추가정보</div>
+    </th>
+    <th class="none">
+      <div>&nbsp;</div>
+    </th>
+    <th class="none">
+      <div>&nbsp;</div>
+    </th>
+    <th class="none">
+      <div>&nbsp;</div>
+    </th>
+    <th class="none">
+      <div>&nbsp;</div>
+    </th>
+  </tr>
+  <tr>
+    <td colspan="7" class="text" style="padding:10px">
+      <div id="tab1" style="width:585px;padding-bottom:2px;">
+        <strong>Ohi</strong>는 한글 입력을 지원하지 않는 PC에서 별도의 프로그램을 설치하지 않고
+        사용할 수 있는 온라인 한글 입력기입니다. 한/영 전환은 <kbd class="menu" onclick="ohiStart('Ko')"
+        onmouseover="this.className='over'" onmouseout="this.className='menu'">Ctrl+Space</kbd>(두벌식)
+        또는 <kbd class="menu" onclick="ohiStart('K3')"
+        onmouseover="this.className='over'" onmouseout="this.className='menu'">Shift+Space</kbd>(세벌식)
+        키를 사용합니다.
+        한국과 영문 배열이 다른 자판을 사용하는 곳에서 접속하신 경우 <kbd class="menu" onclick="ohiStart('KBD')"
+        onmouseover="this.className='over'" onmouseout="this.className='menu'">Ctrl+Enter</kbd>키를 누르면 기준 자판을
+        <kbd>QWERTY</kbd> -&gt; <kbd>QWERTZ</kbd> -&gt; <kbd>AZERTY</kbd> -&gt; <kbd>QWERTY</kbd> 순으로 변경할 수 있습니다.
+        <textarea id="inputText" cols="88" rows="16" style="width:580px;height:272;"></textarea>
+          <div style="padding-top:2px">
+          ※ 구글번역:
+          <span id="code" class="menu" onmouseover="this.className='over'" onmouseout="this.className='menu'" onclick="openList()">언어선택</span>
+        </div>
+        <div id="translate"></div>
+      </div>
+
+      <div id="tab2" style="width:585px;height:1px;overflow:hidden;visibility:hidden;position:absolute;">
+        원하는 검색엔진 이름 오른쪽의 빈칸에 검색 하고자 하는 내용을 입력한 후 검색 버튼을 클릭하거나 엔터키를 누르세요.
+        한/영 전환은 <kbd class="menu" onclick="ohiStart('Ko')"
+        onmouseover="this.className='over'" onmouseout="this.className='menu'">Ctrl+Space</kbd>(두벌식)
+        또는 <kbd class="menu" onclick="ohiStart('K3')"
+        onmouseover="this.className='over'" onmouseout="this.className='menu'">Shift+Space</kbd>(세벌식)
+        키를 사용합니다.
+        한국과 영문 배열이 다른 자판을 사용하는 곳에서 접속하신 경우 <kbd class="menu" onclick="ohiStart('KBD')"
+        onmouseover="this.className='over'" onmouseout="this.className='menu'">Ctrl+Enter</kbd>키를 누르면 기준 자판을
+        <kbd>QWERTY</kbd> -&gt; <kbd>QWERTZ</kbd> -&gt; <kbd>AZERTY</kbd> -&gt; <kbd>QWERTY</kbd> 순으로 변경할 수 있습니다.
+        <div style="width:585px;text-align:center;">
+        <table id="searchEngines" style="margin:auto;margin-top:14px;margin-bottom:14px;">
+          <tr>
+            <th>구글</th>
+            <td><form target="_blank" action="http://www.google.co.kr/search">
+            <input style="width:300px" class="text" name="q" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+          <tr>
+            <th>네이버</th>
+            <td><form target="_blank" action="http://search.naver.com/search.naver">
+            <input style="width:300px" class="text" name="query" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+          <tr>
+            <th>네이트</th>
+            <td><form target="_blank" action="http://search.nate.com/search/all.html">
+            <input style="width:300px" class="text" name="q" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+          <tr>
+            <th>다음</th>
+            <td><form target="_blank" action="http://search.daum.net/search">
+            <input style="width:300px" class="text" name="q" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+          <tr>
+            <th>빙</th>
+            <td><form target="_blank" action="http://bing.search.daum.net/search">
+            <input style="width:300px" class="text" name="q" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+          <tr>
+            <th>야후</th>
+            <td><form target="_blank" action="http://kr.search.yahoo.com/search">
+            <input style="width:300px" class="text" name="p" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+          <tr>
+            <th>파란</th>
+            <td><form target="_blank" action="http://search.paran.com/search/index.php">
+            <input style="width:300px" class="text" name="Query" />
+            <input style="width:50px" type="submit" value="검색" />
+            </form></td>
+          </tr>
+        </table>
+        </div>
+      </div>
+
+      <div id="tab3" style="width:585px;height:1px;overflow:hidden;visibility:hidden;position:absolute;">
+        <strong>I. Copy &amp; Paste 대신 원하는 곳에 한글을 직접 입력하세요!</strong>
+        <ol>
+          <li><a
+              href="javascript:(function(s){s=document.createElement('script');s.type='text/javascript';s.src='http://ohi.kr/ohi.js';document.body.appendChild(s)})()"
+              style="font-weight:bold;">Ohi</a>를 마우스 오른쪽 버튼으로 클릭한 다음 <strong>Favorites</strong> 또는
+              <strong>Bookmarks</strong>에 <strong>추가</strong>합니다.
+              이때, 추가할 위치를 Favorites Bar 또는 Bookmarks Toolbar로 지정하면 편리합니다.</li>
+          <li>한글 입력을 원하는 페이지에서 Favorites 또는 Bookmarks의 <strong>Ohi</strong>를 <strong>클릭</strong>한 다음,
+              페이지 우측 하단에 <kbd class="status">En</kbd>이 나타나면 <kbd>Ctrl+Space</kbd> 키를 누르고
+              <strong>한글을 직접 입력</strong>합니다.</li>
+          <li>우측 하단에 나타나는 <kbd class="status">En</kbd> 등을 클릭하면 새 창에서 한글입력 페이지가 열립니다.
+              <strong>Ohi</strong>를 클릭해도 한글이 직접 입력되지 않는 경우에 사용합니다.</li>
+          <li>인터넷에서 메일을 보낼 때, 메일 작성 영역 바로 위의 <strong>일반 텍스트</strong>, <strong>Plain Text</strong> (Gmail),
+              <strong>텍스트모드</strong> (Naver) 등을 클릭하거나, 모드를 <strong>에디터</strong> 에서 <strong>텍스트</strong> (Daum)로
+              변경한 다음에 <strong>Ohi</strong>를 사용하면 한글로 메일을 작성할 수 있습니다.</li>
+        </ol>
+        <strong>II. 어디서든 내 홈페이지에 한글을 입력할 수 있게 하세요!</strong>
+        <ol>
+          <li>대부분의 경우 홈페이지의 소스에 다음을 추가하는 것 만으로 <strong>Ohi</strong>의 적용이 완료 됩니다.<br />
+              <kbd>&lt;script type=&quot;text/javascript&quot; src=&quot;http://ohi.kr/ohi.js&quot;&gt;&lt;/script&gt;</kbd></li>
+          <li>만약 홈페이지에서 위의 한 줄을 추가해도 <strong>Ohi</strong>가 적용되지 않는 경우 홈페이지에서 onkeypress 또는
+              onkeydown 이벤트 핸들러를 사용하고 있을 가능성이 높습니다. 그런 경우 <strong>Ohi</strong>의 이벤트 핸들러와
+              충돌하지 않도록 javascript를 다소 수정해야 합니다.</li>
+          <li>
+4a0
+<strong>Ohi</strong>는 javascript를 사용하여 만든 프로그램으로,
+              <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>에 따라 자유롭게 수정 배포 및
+              사용할 수 있으며, <a href="ohi.js">ohi.js</a> 에서 프로그램 소스를 다운받을 수 있습니다.</li>
+        </ol>
+      </div>
+
+      <div id="keyboardLayout" style="position:absolute"></div>
+      <div>
+        ※ 자판배열:
+        <span class="menu" onclick="viewKeyboard(2)" onmouseover="this.className='over'" onmouseout="this.className='menu'">두벌식</span>,
+        <span class="menu" onclick="viewKeyboard(3)" onmouseover="this.className='over'" onmouseout="this.className='menu'">세벌식</span>,
+        <span class="menu" onclick="viewKeyboard(0)" onmouseover="this.className='over'" onmouseout="this.className='menu'">숨기기</span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="7" style="font-family:Arial,sans-serif;font-size:10pt;color:tan;text-align:center;">
+      Copyright © Ho-Seok Ee &lt;hsee@korea.ac.kr&gt;. All rights reserved.
+    </td>
+  </tr>
+  </table>
+</body>
+</html>
