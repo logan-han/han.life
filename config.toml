@@ -27,10 +27,17 @@ theme = "pulp"
     weight = 10
 
 [[menu.main]]
+    identifier = "linkedin"
+    # name = "Linkedin"
+    pre = "<i class='fa fa-book-open fa-lg'></i>"
+    url = "https://blog.han.life"
+    weight = 10
+    
+[[menu.main]]
     identifier = "twitter"
     # name = "Twitter"
-    pre = "<i class='fab fa-twitter fa-lg'></i>"
-    url = "https://twitter.com/logan_han"
+    pre = "<i class='fab fa-linkedin fa-lg'></i>"
+    url = "https://www.linkedin.com/in/loganhan/"
     weight = 20
 
 [[menu.main]]
