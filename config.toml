@@ -31,27 +31,27 @@ theme = "pulp"
 [[menu.main]]
     identifier = "linkedin"
     # name = "Linkedin"
-    pre = "<i class='fa fa-book-open fa-lg'></i>"
-    url = "https://blog.han.life"
-    weight = 10
+    pre = "<i class='fab fa-linkedin fa-lg'></i>"
+    url = "https://www.linkedin.com/in/loganhan/"
+    weight = 20
     
 [[menu.main]]
     identifier = "twitter"
     # name = "Twitter"
-    pre = "<i class='fab fa-linkedin fa-lg'></i>"
-    url = "https://www.linkedin.com/in/loganhan/"
-    weight = 20
+    pre = "<i class='fab fa-twitter fa-lg'></i>"
+    url = "https://twitter.com/logan_han"
+    weight = 30
 
 [[menu.main]]
     identifier = "github"
     # name = "GitHub"
     pre = "<i class='fab fa-github fa-lg'></i>"
     url = "https://github.com/logan-han"
-    weight = 30
+    weight = 40
 
 [[menu.main]]
     identifier = "email"
     # name = "Email"
     pre = "<i class='fa fa-envelope fa-lg'></i>"
     url = "mailto:logan@this_domain"
-    weight = 40
+    weight = 50
