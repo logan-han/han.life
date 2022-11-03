@@ -1,57 +1,42 @@
-title = "Greetings, Stranger"
 baseURL = "https://han.life/"
-canonifyurls = true
-hasCJKLanguage = true
-tags = ["ops", "blog"]
-langaugeCode = "en-AU"
-config = "config.toml"
-theme = "pulp"
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+relativeURLs = true
+disableRSS = true
+enableRobotsTXT = true
+editor = "nano"
+languageCode = "en"
+language = "en"
+theme = "vncnt-hugo"
+title = "Logan Han · Greetings, Stranger"
+
+_merge = "none"
+
+[permalinks]
+fixed = ":title/"
+posts = "posts/:slug/"
 
 [params]
-    author = "Logan Han"
-    avatar = "profile.jpg"
-    avatarDescription = "Slytherin!"
-    favicon = "favicon.ico"
-    description = """
-        Just another ops guy in down under.
-    """
-    publicationYear = "2020"
+author = "Logan Han"
+description = "Landing Page"
+bio = "Systems Engineer  \nAustralia"
+avatar = "img/profile.jpg"
+favicon = "img/favicon.ico"
+error404 = "There is no such page."
 
-[outputs]
-    section = ["JSON", "HTML"]
-    term = ["JSON", "HTML"]
+[params.contact]
+github = "https://github.com/logan-han"
+twitter = "https://twitter.com/logan_han"
+linkedin = "https://www.linkedin.com/in/loganhan"
 
-[[menu.main]]
-    identifier = "blog"
-    # name = "Blog"
-    pre = "<i class='fa fa-book-open fa-lg'></i>"
-    url = "https://blog.han.life"
-    weight = 10
-
-[[menu.main]]
-    identifier = "linkedin"
-    # name = "Linkedin"
-    pre = "<i class='fab fa-linkedin fa-lg'></i>"
-    url = "https://www.linkedin.com/in/loganhan/"
-    weight = 20
-    
-[[menu.main]]
-    identifier = "twitter"
-    # name = "Twitter"
-    pre = "<i class='fab fa-twitter fa-lg'></i>"
-    url = "https://twitter.com/logan_han"
-    weight = 30
-
-[[menu.main]]
-    identifier = "github"
-    # name = "GitHub"
-    pre = "<i class='fab fa-github fa-lg'></i>"
-    url = "https://github.com/logan-han"
-    weight = 40
-
-[[menu.main]]
-    identifier = "email"
-    # name = "Email"
-    pre = "<i class='fa fa-envelope fa-lg'></i>"
-    url = "mailto:logan@this_domain"
-    weight = 50
+[params.contact.blog]
+name = "Blog"
+icon = "book-open"
+style = "fas"
+link = "https://blog.han.life"
+[params.contact.email]
+name = "email"
+icon = "envelope"
+style = "fas"
+link = "mailto:logan@this_domain"
