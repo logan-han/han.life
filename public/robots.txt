@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow: /keyboard/
+
+
+Sitemap: http://localhost:1313/sitemap.xml

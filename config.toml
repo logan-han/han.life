@@ -2,41 +2,60 @@ baseURL = "https://han.life/"
 buildDrafts = false
 buildFuture = false
 buildExpired = false
-relativeURLs = true
+relativeURLs = false
 disableRSS = true
 enableRobotsTXT = true
-editor = "nano"
-languageCode = "en"
+enableGitInfo = true
+languageCode = "en-AU"
 language = "en"
-theme = "vncnt-hugo"
-title = "Logan Han · Greetings, Stranger"
+theme = "han-modern"
+title = "Logan Han"
 
-_merge = "none"
+# Hugo Coder theme configuration
+enableEmoji = true
+enableInlineShortcodes = true
+
+# Pagination configuration
+[pagination]
+  pagerSize = 20
+
+# Markup configuration for code highlighting
+[markup]
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+
+# Sitemap configuration
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [permalinks]
-fixed = ":title/"
-posts = "posts/:slug/"
+  posts = "posts/:slug/"
 
 [params]
-author = "Logan Han"
-description = "Landing Page"
-bio = "Systems Engineer  \nAustralia"
-avatar = "img/profile.jpg"
-favicon = "img/favicon.ico"
-error404 = "There is no such page."
-
-[params.contact]
-github = "https://github.com/logan-han"
-twitter = "https://twitter.com/logan_han"
-linkedin = "https://www.linkedin.com/in/loganhan"
-
-[params.contact.blog]
-name = "Blog"
-icon = "book-open"
-style = "fas"
-link = "https://blog.han.life"
-[params.contact.email]
-name = "email"
-icon = "envelope"
-style = "fas"
-link = "mailto:logan@this_domain"
+  author = "Logan Han"
+  description = "Systems Engineer based in Australia"
+  keywords = "logan han, systems engineer, australia, technology, automation, devops"
+  info = ["Systems Engineer", "Australia"]
+  avatar = "img/profile.jpg"
+  
+  # Color scheme: auto follows system theme (no manual toggle)
+  colorScheme = "auto"
+  hideColorSchemeToggle = true
+  
+  # Social configuration (using Hugo Coder style)
+  social = [
+    {name = "Github", icon = "fab fa-github", weight = 1, url = "https://github.com/logan-han"},
+    {name = "LinkedIn", icon = "fab fa-linkedin", weight = 2, url = "https://www.linkedin.com/in/loganhan"},
+    {name = "Blog", icon = "fas fa-rss", weight = 3, url = "https://blog.han.life"},
+    {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@this_domain"},
+  ]

@@ -1,0 +1,18 @@
+/* Simple dark mode overrides for Hugo Coder color scheme */
+
+/* These styles are automatically applied based on colorScheme setting */
+/* No need for manual body.colorscheme-dark selectors since CSS variables handle it */
+
+/* Additional dark mode specific adjustments */
+body.colorscheme-dark .hero::before,
+body.colorscheme-auto .hero::before {
+    background: radial-gradient(circle at 20% 80%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(21, 101, 192, 0.1) 0%, transparent 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+    body.colorscheme-auto .hero::before {
+        background: radial-gradient(circle at 20% 80%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(21, 101, 192, 0.1) 0%, transparent 50%);
+    }
+}

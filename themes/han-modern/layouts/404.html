@@ -1,0 +1,9 @@
+{{ define "content" }}
+<section class="container centered">
+  <div class="error">
+    <h1>404</h1>
+    <h2>{{ .Site.Params.error404 | default "Page Not Found" }}</h2>
+    <p><a href="{{ "/" | relLangURL }}">Go back home</a></p>
+  </div>
+</section>
+{{ end }}

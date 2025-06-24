@@ -1,0 +1,16 @@
+<footer class="footer">
+  <section class="container">
+    <p>
+      {{ if .Site.Copyright }}
+        {{ .Site.Copyright | safeHTML }}
+      {{ else }}
+        © {{ now.Format "2006" }} {{ .Site.Params.author }}
+      {{ end }}
+      {{ if (and .Site.Params.commit .GitInfo) }}
+        {{ $ref := .GitInfo.AbbreviatedHash }}
+        {{ $commitURL := printf "%s/commit/%s" .Site.Params.commit $ref }}
+        • <a href="{{ $commitURL }}">{{ $ref }}</a>
+      {{ end }}
+    </p>
+  </section>
+</footer>

@@ -1,0 +1,16 @@
+{
+    "name": "Logan Han - Systems Engineer",
+    "short_name": "Logan Han",
+    "description": "Personal website of Logan Han, Systems Engineer based in Australia",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "{{ .Site.Params.favicon | relURL }}",
+            "sizes": "any",
+            "type": "image/x-icon"
+        }
+    ]
+}

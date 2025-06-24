@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            {{ if .Site.Params.avatar }}
+            <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}" class="hero-avatar">
+            {{ end }}
+            
+            <h1 class="hero-title">{{ .Site.Params.author | default .Site.Title }}</h1>
+            
+            {{ if .Site.Params.info }}
+            <p class="hero-bio">
+                {{ range $index, $info := .Site.Params.info }}
+                    {{ if $index }} · {{ end }}{{ $info | safeHTML }}
+                {{ end }}
+            </p>
+            {{ end }}
+            
+            {{ with .Content }}
+            <div class="hero-description">{{ . | safeHTML }}</div>
+            {{ end }}
+            
+            <div class="contact-links">
+                {{ range .Site.Params.social }}
+                <a href="{{ .url }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <i class="{{ .icon }}"></i>
+                    {{ .name }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

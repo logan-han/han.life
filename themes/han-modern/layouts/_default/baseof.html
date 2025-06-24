@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ else }}{{ .Site.Params.author }} - Personal Website{{ end }}{{ end }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
+    <meta name="keywords" content="{{ .Site.Params.keywords }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ .Permalink }}">
+    
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    
+    <!-- Favicon -->
+    {{ if .Site.Params.faviconSVG }}
+    <link rel="icon" type="image/x-icon" href="{{ .Site.Params.faviconSVG | relURL }}">
+    <link rel="apple-touch-icon" href="{{ .Site.Params.faviconSVG | relURL }}">
+    {{ end }}
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    {{ if or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
+    <link rel="stylesheet" href="{{ "css/coder-dark-simple.css" | relURL }}">
+    {{ end }}
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+    <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    {{ if .Site.Params.avatar }}
+    <meta property="og:image" content="{{ .Site.Params.avatar | absURL }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ .Site.Params.author }}">
+    {{ end }}
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ .Permalink }}">
+    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+    <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    {{ if .Site.Params.avatar }}
+    <meta name="twitter:image" content="{{ .Site.Params.avatar | absURL }}">
+    <meta name="twitter:image:alt" content="{{ .Site.Params.author }}">
+    {{ end }}
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#1565c0">
+    <meta name="msapplication-TileColor" content="#1565c0">
+</head>
+
+{{ $csClass := "colorscheme-light" }}
+{{ if eq .Site.Params.colorScheme "dark" }}
+{{ $csClass = "colorscheme-dark" }}
+{{ else if eq .Site.Params.colorScheme "auto" }}
+{{ $csClass = "colorscheme-auto" }}
+{{ end }}
+
+<body class="preload-transitions {{ $csClass }}">
+    {{ if not .Site.Params.hideColorSchemeToggle }}
+    <div class="float-container">
+        <a id="dark-mode-toggle" class="colorscheme-toggle">
+            <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+    {{ end }}
+
+    <main class="main" style="min-height: 100vh;">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- Scripts -->
+    <script src="{{ "js/main.js" | relURL }}"></script>
+    {{ if or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
+    <script src="{{ "js/coder.js" | relURL }}"></script>
+    {{ end }}
+</body>
+</html>

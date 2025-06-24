@@ -1,0 +1,12 @@
+name = "Han Modern"
+license = "MIT"
+licenselink = "https://github.com/logan-han/han.life/blob/master/LICENSE"
+description = "A modern, clean personal landing page theme for Hugo"
+homepage = "https://han.life/"
+tags = ["personal", "landing-page", "modern", "clean", "minimal"]
+features = ["responsive", "dark-mode", "animations"]
+min_version = "0.80.0"
+
+[author]
+  name = "Logan Han"
+  homepage = "https://han.life/"
