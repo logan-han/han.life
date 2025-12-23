@@ -183,12 +183,6 @@ function ohiStart(l) {
                                 document.onkeypress = ohiKeypress;
                                 document.onkeydown = ohiKeydown;
                         }
-                        for (var i=0; i<window.frames.length; i++) {
-                                var ohi = document.createElement('script');
-                                ohi.type= 'text/javascript';
-                                ohi.src = 'http://ohi.kr/ohi.js';
-                                if (typeof(window.frames[i].document)!='unknown') window.frames[i].document.body.appendChild(ohi);
-                        }
                 }
         }
         else ohiTimeout = setTimeout("ohiStart()",100);
