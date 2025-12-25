@@ -54,21 +54,93 @@ document.addEventListener('DOMContentLoaded', function() {
     const hero = document.querySelector('.hero');
     if (hero) {
         let ticking = false;
-        
+
         function updateHero() {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;
             hero.style.transform = `translateY(${rate}px)`;
             ticking = false;
         }
-        
+
         function requestTick() {
             if (!ticking) {
                 requestAnimationFrame(updateHero);
                 ticking = true;
             }
         }
-        
+
         window.addEventListener('scroll', requestTick);
+
+        // Create floating particles effect
+        createParticles(hero);
     }
 });
+
+// Floating particles effect for hero section
+function createParticles(hero) {
+    // Respect user's motion preferences
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const particleContainer = document.createElement('div');
+    particleContainer.className = 'particles';
+    particleContainer.setAttribute('aria-hidden', 'true');
+    particleContainer.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    `;
+    hero.appendChild(particleContainer);
+
+    // Create particles
+    for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('div');
+        const size = 4 + Math.random() * 4;
+        const delay = Math.random() * 8;
+        const duration = 12 + Math.random() * 8;
+        const startX = Math.random() * 100;
+
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0;
+            left: ${startX}%;
+            bottom: -20px;
+            animation: particleFloat ${duration}s ease-in-out ${delay}s infinite;
+        `;
+        particleContainer.appendChild(particle);
+    }
+
+    // Add particle animation keyframes if not already added
+    if (!document.querySelector('#particle-keyframes')) {
+        const style = document.createElement('style');
+        style.id = 'particle-keyframes';
+        style.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    transform: translateY(0) scale(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.15;
+                }
+                90% {
+                    opacity: 0.15;
+                }
+                100% {
+                    transform: translateY(-100vh) scale(1);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}

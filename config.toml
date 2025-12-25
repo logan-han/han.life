@@ -50,12 +50,12 @@ enableInlineShortcodes = true
   
   # Color scheme: auto follows system theme (no manual toggle)
   colorScheme = "auto"
-  hideColorSchemeToggle = true
+  hideColorSchemeToggle = false
   
   # Social configuration (using Hugo Coder style)
   social = [
     {name = "Github", icon = "fab fa-github", weight = 1, url = "https://github.com/logan-han"},
     {name = "LinkedIn", icon = "fab fa-linkedin", weight = 2, url = "https://www.linkedin.com/in/loganhan"},
     {name = "Blog", icon = "fas fa-rss", weight = 3, url = "https://blog.han.life"},
-    {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@this_domain"},
+    {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@han.life"},
   ]
