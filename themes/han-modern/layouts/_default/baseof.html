@@ -39,8 +39,6 @@
     <meta property="og:site_name" content="{{ .Site.Title }}">
     {{ if .Site.Params.avatar }}
     <meta property="og:image" content="{{ .Site.Params.avatar | absURL }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="{{ .Site.Params.author }}">
     {{ end }}
     
@@ -57,6 +55,17 @@
     <!-- Theme color -->
     <meta name="theme-color" content="#1565c0">
     <meta name="msapplication-TileColor" content="#1565c0">
+
+    <!-- Google Analytics -->
+    {{ if and .Site.Params.googleAnalytics (not hugo.IsServer) }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ .Site.Params.googleAnalytics }}');
+    </script>
+    {{ end }}
 </head>
 
 {{ $csClass := "colorscheme-light" }}

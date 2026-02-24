@@ -1,7 +1,5 @@
 // Modern interactions and enhancements for han.life
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Han.life loaded successfully!');
-    
     // Add smooth scrolling for any anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

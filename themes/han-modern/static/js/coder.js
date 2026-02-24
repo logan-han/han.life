@@ -21,8 +21,10 @@ if (darkModeToggle) {
     });
 }
 
-darkModeMediaQuery.addListener((event) => {
-    setTheme(event.matches ? "dark" : "light");
+darkModeMediaQuery.addEventListener('change', (event) => {
+    if (!localStorage.getItem("colorscheme")) {
+        setTheme(event.matches ? "dark" : "light");
+    }
 });
 
 document.addEventListener("DOMContentLoaded", function () {

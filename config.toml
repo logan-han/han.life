@@ -52,6 +52,9 @@ enableInlineShortcodes = true
   colorScheme = "auto"
   hideColorSchemeToggle = false
   
+  # Google Analytics
+  googleAnalytics = "G-CVEBFCXFSW"
+
   # Social configuration (using Hugo Coder style)
   social = [
     {name = "Github", icon = "fab fa-github", weight = 1, url = "https://github.com/logan-han"},
