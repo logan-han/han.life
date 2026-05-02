@@ -47,6 +47,9 @@ enableInlineShortcodes = true
   keywords = "logan han, systems engineer, australia, technology, automation, devops"
   info = ["Systems Engineer", "Australia"]
   avatar = "img/profile.jpg"
+  favicon = "img/favicon.ico"
+  faviconSVG = "img/favicon.svg"
+  appleTouchIcon = "img/apple-touch-icon.png"
   
   # Color scheme: auto follows system theme (no manual toggle)
   colorScheme = "auto"

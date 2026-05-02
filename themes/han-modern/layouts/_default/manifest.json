@@ -8,6 +8,11 @@
     "theme_color": "#2563eb",
     "icons": [
         {
+            "src": "{{ .Site.Params.appleTouchIcon | relURL }}",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
             "src": "{{ .Site.Params.favicon | relURL }}",
             "sizes": "any",
             "type": "image/x-icon"

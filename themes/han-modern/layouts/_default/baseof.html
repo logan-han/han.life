@@ -12,9 +12,14 @@
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     
     <!-- Favicon -->
-    {{ if .Site.Params.faviconSVG }}
-    <link rel="icon" type="image/x-icon" href="{{ .Site.Params.faviconSVG | relURL }}">
-    <link rel="apple-touch-icon" href="{{ .Site.Params.faviconSVG | relURL }}">
+    {{ with .Site.Params.faviconSVG }}
+    <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
+    {{ end }}
+    {{ with .Site.Params.favicon }}
+    <link rel="alternate icon" type="image/x-icon" href="{{ . | relURL }}">
+    {{ end }}
+    {{ with .Site.Params.appleTouchIcon }}
+    <link rel="apple-touch-icon" href="{{ . | relURL }}">
     {{ end }}
     
     <!-- Fonts -->
