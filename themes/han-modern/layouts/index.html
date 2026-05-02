@@ -1,33 +1,55 @@
 {{ define "main" }}
 <section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            {{ if .Site.Params.avatar }}
-            <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}" class="hero-avatar">
-            {{ end }}
-            
-            <h1 class="hero-title">{{ .Site.Params.author | default .Site.Title }}</h1>
-            
-            {{ if .Site.Params.info }}
-            <p class="hero-bio">
-                {{ range $index, $info := .Site.Params.info }}
-                    {{ if $index }} · {{ end }}{{ $info | safeHTML }}
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-meta">
+        <span class="hero-meta-left">han.life</span>
+    </div>
+
+    <div class="hero-stage">
+        <div class="hero-inner">
+            <h1 class="hero-title">
+                {{ $name := .Site.Params.author | default .Site.Title }}
+                {{ $parts := split $name " " }}
+                {{ if ge (len $parts) 2 }}
+                    {{ index $parts 0 }}<br>{{ delimit (after 1 $parts) " " }}<span class="hero-dot">.</span>
+                {{ else }}
+                    {{ $name }}<span class="hero-dot">.</span>
                 {{ end }}
-            </p>
+            </h1>
+
+            {{ if .Site.Params.info }}
+            <div class="hero-sub">
+                {{ range $i, $info := .Site.Params.info }}
+                    {{ if $i }}<span class="hero-sep">/</span>{{ end }}
+                    <span>{{ $info | safeHTML }}</span>
+                {{ end }}
+            </div>
             {{ end }}
-            
-            {{ with .Content }}
-            <div class="hero-description">{{ . | safeHTML }}</div>
-            {{ end }}
-            
+
             <div class="contact-links">
-                {{ range .Site.Params.social }}
-                <a href="{{ .url }}" class="contact-link" target="_blank" rel="noopener noreferrer">
-                    <i class="{{ .icon }}"></i>
-                    {{ .name }}
+                {{ range $i, $s := .Site.Params.social }}
+                <a href="{{ $s.url }}" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <span class="contact-link-label">
+                        <span class="contact-link-num">{{ printf "%02d" (add $i 1) }}</span>
+                        <span class="contact-link-bullet">·</span>
+                        <span>{{ $s.name }}</span>
+                    </span>
+                    <span class="contact-link-row">
+                        <span class="contact-link-handle">
+                            {{ if eq $s.name "Github" }}logan-han
+                            {{ else if eq $s.name "LinkedIn" }}in/loganhan
+                            {{ else if eq $s.name "Blog" }}blog.han.life
+                            {{ else if eq $s.name "Email" }}logan@han.life
+                            {{ else }}{{ $s.url }}
+                            {{ end }}
+                        </span>
+                        <span class="contact-link-arrow" aria-hidden="true">↗</span>
+                    </span>
                 </a>
                 {{ end }}
             </div>
+
         </div>
     </div>
 </section>

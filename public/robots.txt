@@ -3,4 +3,4 @@ User-agent: *
 Disallow: /keyboard/
 
 
-Sitemap: http://localhost:1313/sitemap.xml
+Sitemap: https://han.life/sitemap.xml
