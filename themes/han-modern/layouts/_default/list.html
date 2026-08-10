@@ -1,0 +1,22 @@
+{{ define "content" }}
+<section class="container">
+  <div class="list">
+    <h1>{{ .Title }}</h1>
+    
+    {{ with .Content }}
+    <div>{{ . }}</div>
+    {{ end }}
+    
+    <ul>
+      {{ range .Paginator.Pages }}
+      <li>
+        <span class="date">{{ .Date.Format (.Site.Params.dateFormatList | default "January 2, 2006") }}</span>
+        <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    
+    {{ template "_internal/pagination.html" . }}
+  </div>
+</section>
+{{ end }}

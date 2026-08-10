@@ -1,0 +1,92 @@
+baseURL = "https://han.life/"
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+relativeURLs = false
+disableRSS = true
+enableRobotsTXT = true
+enableGitInfo = true
+languageCode = "en-AU"
+language = "en"
+theme = "han-modern"
+title = "Logan Han"
+
+# Hugo Coder theme configuration
+enableEmoji = true
+enableInlineShortcodes = true
+
+# Pagination configuration
+[pagination]
+  pagerSize = 20
+
+# Markup configuration for code highlighting
+[markup]
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    codeFences = true
+    guessSyntax = true
+
+# Sitemap configuration
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[permalinks]
+  posts = "posts/:slug/"
+
+[params]
+  author = "Logan Han"
+  description = "Systems Engineer based in Australia"
+  keywords = "logan han, systems engineer, australia, technology, automation, devops"
+  info = ["Systems Engineer", "Australia"]
+  avatar = "img/profile.jpg"
+  favicon = "img/favicon.ico"
+  faviconSVG = "img/favicon.svg"
+  appleTouchIcon = "img/apple-touch-icon.png"
+  
+  # Color scheme: auto follows system theme (no manual toggle)
+  colorScheme = "auto"
+  hideColorSchemeToggle = false
+  
+  # Google Analytics
+  googleAnalytics = "G-CVEBFCXFSW"
+
+  # Social configuration (using Hugo Coder style)
+  social = [
+    {name = "Github", icon = "fab fa-github", weight = 1, url = "https://github.com/logan-han"},
+    {name = "LinkedIn", icon = "fab fa-linkedin", weight = 2, url = "https://www.linkedin.com/in/loganhan"},
+    {name = "Blog", icon = "fas fa-rss", weight = 3, url = "https://blog.han.life"},
+    {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@thisdomain"},
+  ]
+
+# Projects listed on the homepage. Anything reachable on the web belongs here;
+# omit `repo` for the closed-source ones. Unreleased work stays off the list.
+[[params.projects]]
+  name = "Taxman"
+  description = "Australian take-home pay, tax, HECS and mortgage calculators, every figure traced to its ATO source."
+  url = "https://tax.han.life"
+  repo = "https://github.com/logan-han/taxman"
+
+[[params.projects]]
+  name = "Tax Invoice"
+  description = "Generates Australian GST tax invoices as PDF, with shareable pre-fill links."
+  url = "https://invoice.han.life"
+  repo = "https://github.com/logan-han/tax-invoice"
+
+[[params.projects]]
+  name = "SMS OTP Burner"
+  description = "Leases a temporary Australian mobile number and reads incoming OTP codes in the browser."
+  url = "https://sms.han.life"
+  repo = "https://github.com/logan-han/sms-otp-burner"
+
+[[params.projects]]
+  name = "Emoji Guesser"
+  description = "Real-time multiplayer party game: describe a secret word in emojis while everyone races to guess it."
+  url = "https://emoji.han.life"

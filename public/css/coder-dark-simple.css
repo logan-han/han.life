@@ -1,0 +1,2 @@
+/* Dark mode is handled by body.colorscheme-* CSS variable swaps in style.css.
+   This file is intentionally minimal — kept so baseof.html's <link> still resolves. */

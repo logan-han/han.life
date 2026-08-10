@@ -1,0 +1,56 @@
+{{ define "content" }}
+<section class="container">
+  <div class="content">
+    <article class="post">
+      <header>
+        <h1 class="post-title">{{ .Title }}</h1>
+        
+        <div class="post-meta">
+          <time class="post-date">
+            <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+            {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
+          </time>
+          
+          {{ if .Params.author }}
+          <span class="post-author">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            {{ .Params.author }}
+          </span>
+          {{ end }}
+          
+          {{ if .Params.categories }}
+          <span class="post-categories">
+            <i class="fa-solid fa-folder" aria-hidden="true"></i>
+            {{ range $index, $category := .Params.categories }}
+              {{ if $index }}, {{ end }}
+              <a href="{{ (urlize (printf "categories/%s" $category)) | relLangURL }}">{{ $category }}</a>
+            {{ end }}
+          </span>
+          {{ end }}
+          
+          {{ if .ReadingTime }}
+          <span class="post-reading-time">
+            <i class="fa-regular fa-clock" aria-hidden="true"></i>
+            {{ .ReadingTime }} min read
+          </span>
+          {{ end }}
+        </div>
+      </header>
+      
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+      
+      {{ if .Params.tags }}
+      <div class="post-tags">
+        {{ range .Params.tags }}
+        <span class="tag">
+          <a href="{{ (urlize (printf "tags/%s" .)) | relLangURL }}">#{{ . }}</a>
+        </span>
+        {{ end }}
+      </div>
+      {{ end }}
+    </article>
+  </div>
+</section>
+{{ end }}
