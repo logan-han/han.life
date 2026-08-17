@@ -69,6 +69,12 @@ enableInlineShortcodes = true
 # Projects listed on the homepage. Anything reachable on the web belongs here;
 # omit `repo` for the closed-source ones. Unreleased work stays off the list.
 [[params.projects]]
+  name = "pollywiki"
+  description = "The Australian federal record, unedited: parliamentarians, division votes, bills and election results from official sources."
+  url = "https://pollywiki.au"
+  repo = "https://github.com/logan-han/pollywiki"
+
+[[params.projects]]
   name = "Taxman"
   description = "Australian take-home pay, tax, HECS and mortgage calculators, every figure traced to its ATO source."
   url = "https://tax.han.life"
