@@ -96,3 +96,9 @@ enableInlineShortcodes = true
   name = "Emoji Guesser"
   description = "Real-time multiplayer party game: describe a secret word in emojis while everyone races to guess it."
   url = "https://emoji.han.life"
+
+[[params.projects]]
+  name = "Buy Me a Coffee"
+  description = "Self-hosted tip jar: Stripe Payment Links on a static page, no backend and no platform fees."
+  url = "https://coffee.han.life"
+  repo = "https://github.com/logan-han/coffee.han.life"
