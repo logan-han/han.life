@@ -98,7 +98,6 @@ enableInlineShortcodes = true
   url = "https://emoji.han.life"
 
 [[params.projects]]
-  name = "Buy Me a Coffee"
-  description = "Self-hosted tip jar: Stripe Payment Links on a static page, no backend and no platform fees."
-  url = "https://coffee.han.life"
-  repo = "https://github.com/logan-han/coffee.han.life"
+  name = "Hearth"
+  description = "Self-hosted family assistant in a Telegram chat: shared calendar, lists, reminders and email answers."
+  url = "https://github.com/logan-han/hearth"
