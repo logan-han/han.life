@@ -96,6 +96,7 @@ enableInlineShortcodes = true
   name = "Emoji Guesser"
   description = "Real-time multiplayer party game: describe a secret word in emojis while everyone races to guess it."
   url = "https://emoji.han.life"
+  repo = "https://github.com/logan-han/emoji-guesser"
 
 [[params.projects]]
   name = "Hearth"
