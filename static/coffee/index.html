@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buy Logan a coffee</title>
+<meta name="description" content="If something I built saved you a bit of time, shout me a coffee.">
+<link rel="canonical" href="https://han.life/coffee/">
+<meta property="og:title" content="Buy Logan a coffee">
+<meta property="og:description" content="Shout Logan a flat white. Brewed in Melbourne.">
+<meta property="og:url" content="https://han.life/coffee/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+<!-- Production hosts only, so local builds served from localhost stay out of the data -->
+<script>
+if (location.hostname.endsWith('han.life')) {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', 'G-CVEBFCXFSW');
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-CVEBFCXFSW';
+  document.head.appendChild(ga);
+}
+</script>
+<style>
+:root{
+  --bg:#f7f1e8;--card:#fffdf8;--ink:#2c1e15;--muted:#82705f;
+  --accent:#a8542f;--accent-hover:#8f4525;--accent-ink:#fff6ee;
+  --line:#e7dbc9;--shadow:0 10px 30px rgba(60,38,20,.10);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#161110;--card:#221a15;--ink:#f1e7da;--muted:#a68f7b;
+    --accent:#d0713f;--accent-hover:#e08350;--accent-ink:#1d130c;
+    --line:#37291f;--shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+}
+*{box-sizing:border-box;margin:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  min-height:100svh;display:flex;flex-direction:column;align-items:center;
+  padding:48px 20px 32px;
+}
+main{width:100%;max-width:640px;text-align:center;flex:1}
+.cup{width:96px;height:96px;margin:0 auto 8px;display:block}
+.steam{stroke:var(--muted);stroke-width:3;stroke-linecap:round;fill:none;opacity:0;animation:steam 3s ease-out infinite}
+.steam.s2{animation-delay:1s}.steam.s3{animation-delay:2s}
+@keyframes steam{0%{opacity:0;transform:translateY(6px)}35%{opacity:.7}100%{opacity:0;transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.steam{animation:none;opacity:.4}}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--muted);max-width:44ch;margin:0 auto 36px}
+.options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+a.opt{
+  display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 12px;text-decoration:none;color:var(--ink);
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+}
+a.opt:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent)}
+.opt .icons{font-size:1.5rem;display:block;margin-bottom:6px;letter-spacing:2px}
+.opt .label{display:block;font-weight:600}
+.opt .price{display:block;color:var(--muted);font-size:.95rem}
+a.custom{
+  display:block;background:var(--accent);color:var(--accent-ink);border-radius:16px;
+  padding:16px;font-weight:600;text-decoration:none;margin-bottom:28px;
+  transition:transform .15s ease,background .15s ease,box-shadow .15s ease;
+}
+a.custom:hover{transform:translateY(-3px);background:var(--accent-hover);box-shadow:var(--shadow)}
+.fine{color:var(--muted);font-size:.85rem}
+footer{color:var(--muted);font-size:.85rem;margin-top:48px}
+footer a{color:inherit}
+@media (max-width:520px){.options{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <svg class="cup" viewBox="0 0 96 96" aria-hidden="true">
+    <path class="steam" d="M38 26c-3-5 3-7 0-12"/>
+    <path class="steam s2" d="M48 24c-3-5 3-7 0-12"/>
+    <path class="steam s3" d="M58 26c-3-5 3-7 0-12"/>
+    <path d="M24 38h44a4 4 0 0 1 4 4v6a14 14 0 0 1-14 14h-2.5A18 18 0 0 1 42 74h-4a18 18 0 0 1-18-18V42a4 4 0 0 1 4-4z" fill="var(--accent)"/>
+    <path d="M72 44h4a8 8 0 0 1 0 16h-5.5a22 22 0 0 0 1.5-8v-8z" fill="none" stroke="var(--accent)" stroke-width="4"/>
+    <ellipse cx="46" cy="82" rx="28" ry="4" fill="var(--line)"/>
+  </svg>
+  <h1>Buy Logan a coffee</h1>
+  <p class="sub">If something I built or wrote saved you a bit of time, you can shout me a coffee. Brewed and drunk in Melbourne.</p>
+
+  <div class="options">
+    <a class="opt" href="https://donate.stripe.com/8x23cv3Iu3wQfkSaJM8ww01">
+      <span class="icons">☕</span><span class="label">One coffee</span><span class="price">A$5</span>
+    </a>
+    <a class="opt" href="https://donate.stripe.com/8x2cN5baWc3ma0y8BE8ww02">
+      <span class="icons">☕☕☕</span><span class="label">Three coffees</span><span class="price">A$15</span>
+    </a>
+    <a class="opt" href="https://donate.stripe.com/8x26oH5QC9Ve2y60588ww03">
+      <span class="icons">☕×5</span><span class="label">A week's worth</span><span class="price">A$25</span>
+    </a>
+  </div>
+  <a class="custom" href="https://donate.stripe.com/7sYcN5cf00kE0pY4lo8ww04">Choose your own amount</a>
+
+  <p class="fine">Prices include GST. Secure checkout by Stripe. Card details never touch this site.</p>
+</main>
+<footer>© 2026 Logan Han · <a href="/">han.life</a></footer>
+</body>
+</html>
