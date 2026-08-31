@@ -67,7 +67,8 @@ enableInlineShortcodes = true
   ]
 
 # Projects listed on the homepage. Anything reachable on the web belongs here;
-# omit `repo` for the closed-source ones. Unreleased work stays off the list.
+# omit `repo` for the closed-source ones and `url` for the self-hosted ones.
+# Unreleased work stays off the list.
 [[params.projects]]
   name = "pollywiki"
   description = "The Australian federal record, unedited: parliamentarians, division votes, bills and election results from official sources."
@@ -101,4 +102,4 @@ enableInlineShortcodes = true
 [[params.projects]]
   name = "Hearth"
   description = "Self-hosted family assistant in a Telegram chat: shared calendar, lists, reminders and email answers."
-  url = "https://github.com/logan-han/hearth"
+  repo = "https://github.com/logan-han/hearth"

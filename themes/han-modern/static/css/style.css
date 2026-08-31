@@ -356,6 +356,7 @@ body.colorscheme-dark .project:hover {
 
 .project-sep { color: var(--hair-strong); }
 
+.project-host,
 .project-src {
     color: var(--dim);
     text-decoration: none;
@@ -363,6 +364,7 @@ body.colorscheme-dark .project:hover {
     transition: var(--transition);
 }
 
+.project-host:hover,
 .project-src:hover { color: var(--accent); border-color: var(--accent); }
 
 /* footer line */

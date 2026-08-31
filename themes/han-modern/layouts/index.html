@@ -64,15 +64,17 @@
                         <span class="project-label">
                             <span>{{ printf "%02d" (add $i 1) }}</span>
                         </span>
-                        <a class="project-name" href="{{ $p.url }}" target="_blank" rel="noopener noreferrer">
+                        <a class="project-name" href="{{ or $p.url $p.repo }}" target="_blank" rel="noopener noreferrer">
                             <span>{{ $p.name }}</span>
                             <span class="project-arrow" aria-hidden="true">↗</span>
                         </a>
                         <p class="project-desc">{{ $p.description }}</p>
                         <span class="project-links">
-                            <span>{{ replaceRE "^https?://" "" $p.url }}</span>
+                            {{ with $p.url }}
+                            <a class="project-host" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ replaceRE "^https?://" "" . }}</a>
+                            {{ end }}
                             {{ with $p.repo }}
-                            <span class="project-sep">/</span>
+                            {{ with $p.url }}<span class="project-sep">/</span>{{ end }}
                             <a class="project-src" href="{{ . }}" target="_blank" rel="noopener noreferrer">Source</a>
                             {{ end }}
                         </span>
