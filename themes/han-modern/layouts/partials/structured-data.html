@@ -1,0 +1,39 @@
+{{- /* Person / ProfilePage schema. The homepage is the only real page here,
+       so this is what ties the domain to the social profiles. */ -}}
+{{- if .IsHome -}}
+{{- /* The mailto entry is a deliberate placeholder, so only real profile
+       URLs go into sameAs. */ -}}
+{{- $sameAs := slice -}}
+{{- range .Site.Params.social -}}
+  {{- if not (hasPrefix .url "mailto:") -}}
+    {{- $sameAs = $sameAs | append .url -}}
+  {{- end -}}
+{{- end }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "{{ .Site.BaseURL }}",
+  "inLanguage": "{{ .Site.Language.LanguageCode | default "en" }}",
+  "mainEntity": {
+    "@type": "Person",
+    "name": {{ .Site.Params.author | jsonify | safeJS }},
+    "url": "{{ .Site.BaseURL }}",
+    "description": {{ .Site.Params.description | jsonify | safeJS }},
+    {{- with .Site.Params.info }}
+    "jobTitle": {{ index . 0 | jsonify | safeJS }},
+    {{- end }}
+    {{- with .Site.Params.avatar }}
+    "image": "{{ . | absURL }}",
+    {{- end }}
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AU"
+    }
+    {{- with $sameAs }}
+    ,"sameAs": {{ . | jsonify | safeJS }}
+    {{- end }}
+  }
+}
+</script>
+{{- end }}

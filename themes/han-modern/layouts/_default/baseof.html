@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang | default "en" }}">
+<html lang="{{ .Site.Language.LanguageCode | default "en" }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,9 +42,10 @@
     <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
     <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
-    {{ if .Site.Params.avatar }}
-    <meta property="og:image" content="{{ .Site.Params.avatar | absURL }}">
-    <meta property="og:image:alt" content="{{ .Site.Params.author }}">
+    <meta property="og:locale" content="{{ .Site.Params.ogLocale | default "en_US" }}">
+    {{ with .Site.Params.ogImage | default .Site.Params.avatar }}
+    <meta property="og:image" content="{{ . | absURL }}">
+    <meta property="og:image:alt" content="{{ $.Site.Params.author }}">
     {{ end }}
     
     <!-- Twitter -->
@@ -52,14 +53,16 @@
     <meta name="twitter:url" content="{{ .Permalink }}">
     <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
     <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
-    {{ if .Site.Params.avatar }}
-    <meta name="twitter:image" content="{{ .Site.Params.avatar | absURL }}">
-    <meta name="twitter:image:alt" content="{{ .Site.Params.author }}">
+    {{ with .Site.Params.ogImage | default .Site.Params.avatar }}
+    <meta name="twitter:image" content="{{ . | absURL }}">
+    <meta name="twitter:image:alt" content="{{ $.Site.Params.author }}">
     {{ end }}
     
     <!-- Theme color -->
     <meta name="theme-color" content="#1565c0">
     <meta name="msapplication-TileColor" content="#1565c0">
+
+    {{ partial "structured-data.html" . }}
 
     <!-- Google Analytics -->
     {{ if and .Site.Params.googleAnalytics (not hugo.IsServer) }}
