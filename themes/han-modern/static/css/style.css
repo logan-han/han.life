@@ -169,6 +169,61 @@ body.colorscheme-dark .hero-grid { opacity: 0.6; }
 
 .hero-sep { color: var(--hair-strong); }
 
+/* ============= menu ============= */
+.hero-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-nav-link {
+    color: var(--dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.hero-nav-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.hero-nav-link.is-current {
+    color: var(--fg);
+    border-bottom-color: var(--hair-strong);
+}
+
+/* ============= page header ============= */
+/* Long pages start at the top; only the homepage is centred in the viewport */
+.hero-stage-page { align-items: flex-start; }
+
+.page-title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--fg);
+    margin: 0;
+}
+
+.page-lede {
+    margin-top: 20px;
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dim);
+}
+
+.page-lede a {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hair-strong);
+    transition: var(--transition);
+}
+
+.page-lede a:hover { color: var(--accent); border-color: var(--accent); }
+
 /* link grid */
 .contact-links {
     margin-top: 56px;
@@ -263,11 +318,13 @@ body.colorscheme-dark .contact-link:hover {
     background: var(--hair);
 }
 
-/* 1px gaps over a hairline background draw the dividers, so the grid
-   can reflow to any column count without stray borders */
+/* 1px gaps over a hairline background draw the dividers, so the cards can
+   reflow to any column count without stray borders. Wrapping flex rather
+   than grid, so an odd count stretches the last row instead of leaving a
+   hairline-coloured hole */
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1px;
     background: var(--hair);
     border: 1px solid var(--hair);
@@ -277,6 +334,7 @@ body.colorscheme-dark .contact-link:hover {
 }
 
 .project {
+    flex: 1 1 300px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -653,6 +711,9 @@ body.colorscheme-dark .project:hover {
 /* ============= responsive ============= */
 @media (max-width: 720px) {
     .hero-meta { left: 20px; right: 20px; top: 20px; font-size: 10px; }
+    .hero-nav { gap: 14px; }
+    .page-title { font-size: clamp(40px, 13vw, 72px); }
+    .page-lede { font-size: 15px; }
     .hero-stage { padding: 88px 20px 48px; }
     .hero-title { font-size: clamp(56px, 16vw, 96px); letter-spacing: -0.04em; }
     .hero-sub { font-size: 11px; gap: 8px; }
@@ -661,8 +722,7 @@ body.colorscheme-dark .project:hover {
     .contact-link:nth-child(odd) { border-left: none; }
     .contact-link:nth-child(n+3) { border-top: 1px solid var(--hair); }
     .projects { margin-top: 36px; }
-    .project-grid { grid-template-columns: 1fr; }
-    .project { padding: 16px 18px; }
+    .project { flex-basis: 100%; padding: 16px 18px; }
     .hero-foot { font-size: 9px; flex-direction: column; gap: 8px; align-items: flex-start; }
     .float-container { bottom: 16px; right: 16px; }
 }

@@ -41,6 +41,17 @@ enableInlineShortcodes = true
 [permalinks]
   posts = "posts/:slug/"
 
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+
 [params]
   author = "Logan Han"
   description = "Systems Engineer based in Australia"
@@ -68,9 +79,21 @@ enableInlineShortcodes = true
     {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@thisdomain"},
   ]
 
-# Projects listed on the homepage. Anything reachable on the web belongs here;
+# Projects listed on /projects/. Anything reachable on the web belongs here;
 # omit `repo` for the closed-source ones and `url` for the self-hosted ones.
 # Unreleased work stays off the list.
+[[params.projects]]
+  name = "Threads Deleter"
+  description = "Bulk-deletes your own Threads posts through Meta's official API, within its 100-a-day quota."
+  url = "https://threads.han.life"
+  repo = "https://github.com/logan-han/threads-deleter"
+
+[[params.projects]]
+  name = "Tuckshop"
+  description = "Recurring school lunch orders for Flexischools: pick the days and the food once, then place a whole term in one go."
+  url = "https://tuckshop.han.life"
+  repo = "https://github.com/logan-han/tuckshop"
+
 [[params.projects]]
   name = "pollywiki"
   description = "The Australian federal record, unedited: parliamentarians, division votes, bills and election results from official sources."
