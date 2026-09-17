@@ -1,6 +1,0 @@
-User-agent: *
-
-Disallow: /keyboard/
-
-
-Sitemap: https://han.life/sitemap.xml
