@@ -71,12 +71,13 @@ enableInlineShortcodes = true
   # Google Analytics
   googleAnalytics = "G-CVEBFCXFSW"
 
-  # Social configuration (using Hugo Coder style)
+  # Contact line in the footer. `handle` is what is shown, so each link says
+  # where it goes without a label in front of it.
   social = [
-    {name = "Github", icon = "fab fa-github", weight = 1, url = "https://github.com/logan-han"},
-    {name = "LinkedIn", icon = "fab fa-linkedin", weight = 2, url = "https://www.linkedin.com/in/loganhan"},
-    {name = "Blog", icon = "fas fa-rss", weight = 3, url = "https://blog.han.life"},
-    {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@thisdomain"},
+    {name = "Github", handle = "github.com/logan-han", url = "https://github.com/logan-han"},
+    {name = "LinkedIn", handle = "linkedin.com/in/loganhan", url = "https://www.linkedin.com/in/loganhan"},
+    {name = "Blog", handle = "blog.han.life", url = "https://blog.han.life"},
+    {name = "Email", handle = "logan@thisdomain", url = "mailto:logan@thisdomain"},
   ]
 
 # Projects listed on /projects/. Anything reachable on the web belongs here;
@@ -84,7 +85,7 @@ enableInlineShortcodes = true
 # Unreleased work stays off the list.
 [[params.projects]]
   name = "Threads Deleter"
-  description = "Bulk-deletes your own Threads posts through Meta's official API, within its 100-a-day quota."
+  description = "Bulk-deletes your own Threads posts through Meta's official API."
   url = "https://threads.han.life"
   repo = "https://github.com/logan-han/threads-deleter"
 

@@ -1,54 +1,43 @@
 {{ define "main" }}
-<section class="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
+<section class="stage stage-top">
+    <div class="shell">
+        <h1 class="page-title">{{ .Title }}<span class="hero-dot">.</span></h1>
 
-    <div class="hero-meta">
-        <span class="hero-meta-left">han.life</span>
-        {{ partial "nav.html" . }}
-    </div>
+        {{ with .Content }}
+        <div class="page-lede">{{ . }}</div>
+        {{ end }}
 
-    <div class="hero-stage hero-stage-page">
-        <div class="hero-inner">
-            <h1 class="page-title">{{ .Title }}<span class="hero-dot">.</span></h1>
-
-            {{ with .Content }}
-            <div class="page-lede">{{ . }}</div>
-            {{ end }}
-
-            {{ with .Site.Params.projects }}
-            <div class="projects">
-                <div class="projects-head">
-                    <span>Index</span>
-                    <span class="projects-rule" aria-hidden="true"></span>
-                    <span>{{ printf "%02d" (len .) }}</span>
-                </div>
-
-                <div class="project-grid">
-                    {{ range $i, $p := . }}
-                    <div class="project">
-                        <span class="project-label">
-                            <span>{{ printf "%02d" (add $i 1) }}</span>
-                        </span>
-                        <a class="project-name" href="{{ or $p.url $p.repo }}" target="_blank" rel="noopener noreferrer">
-                            <span>{{ $p.name }}</span>
-                            <span class="project-arrow" aria-hidden="true">↗</span>
-                        </a>
-                        <p class="project-desc">{{ $p.description }}</p>
-                        <span class="project-links">
-                            {{ with $p.url }}
-                            <a class="project-host" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ replaceRE "^https?://" "" . }}</a>
-                            {{ end }}
-                            {{ with $p.repo }}
-                            {{ with $p.url }}<span class="project-sep">/</span>{{ end }}
-                            <a class="project-src" href="{{ . }}" target="_blank" rel="noopener noreferrer">Source</a>
-                            {{ end }}
-                        </span>
-                    </div>
-                    {{ end }}
-                </div>
+        {{ with .Site.Params.projects }}
+        <div class="projects">
+            <div class="projects-head">
+                <span>Index</span>
+                <span class="projects-rule" aria-hidden="true"></span>
+                <span>{{ printf "%02d" (len .) }}</span>
             </div>
-            {{ end }}
+
+            <div class="project-grid">
+                {{ range $i, $p := . }}
+                <div class="project">
+                    <span class="project-label">{{ printf "%02d" (add $i 1) }}</span>
+                    <a class="project-name" href="{{ or $p.url $p.repo }}" target="_blank" rel="noopener noreferrer">
+                        <span>{{ $p.name }}</span>
+                        <span class="project-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <p class="project-desc">{{ $p.description }}</p>
+                    <span class="project-links">
+                        {{ with $p.url }}
+                        <a class="project-host" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ replaceRE "^https?://" "" . }}</a>
+                        {{ end }}
+                        {{ with $p.repo }}
+                        {{ with $p.url }}<span class="project-sep">/</span>{{ end }}
+                        <a class="project-src" href="{{ . }}" target="_blank" rel="noopener noreferrer">Source</a>
+                        {{ end }}
+                    </span>
+                </div>
+                {{ end }}
+            </div>
         </div>
+        {{ end }}
     </div>
 </section>
 {{ end }}

@@ -25,10 +25,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
@@ -90,20 +87,19 @@
 {{ end }}
 
 <body class="preload-transitions {{ $csClass }}">
-    {{ if not .Site.Params.hideColorSchemeToggle }}
-    <div class="float-container">
-        <a id="dark-mode-toggle" class="colorscheme-toggle">
-            <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </a>
-    </div>
-    {{ end }}
+    <div class="backdrop" aria-hidden="true"></div>
 
-    <main class="main" style="min-height: 100vh;">
-        {{ block "main" . }}{{ end }}
-    </main>
+    <div class="page">
+        {{ partial "topbar.html" . }}
+
+        <main class="main">
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        {{ partial "contact.html" . }}
+    </div>
 
     <!-- Scripts -->
-    <script src="{{ "js/main.js" | relURL }}"></script>
     {{ if or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
     <script src="{{ "js/coder.js" | relURL }}"></script>
     {{ end }}

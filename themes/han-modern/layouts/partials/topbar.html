@@ -1,0 +1,28 @@
+{{- /* Wordmark, site menu and the colour-scheme toggle. Config menus carry no
+       page reference, so the current entry is matched on URL. */ -}}
+{{ $here := strings.TrimSuffix "/" .RelPermalink }}
+<header class="topbar">
+    <div class="shell">
+        <a class="wordmark" href="{{ "/" | relURL }}">han.life</a>
+
+        <div class="topbar-end">
+            {{ with .Site.Menus.main }}
+            <nav class="menu" aria-label="Main">
+                {{ range . }}
+                {{ $current := eq $here (strings.TrimSuffix "/" (.URL | relURL)) }}
+                <a class="menu-link{{ if $current }} is-current{{ end }}" href="{{ .URL | relURL }}"{{ if $current }} aria-current="page"{{ end }}>{{ .Name }}</a>
+                {{ end }}
+            </nav>
+            {{ end }}
+
+            {{ if not .Site.Params.hideColorSchemeToggle }}
+            <button id="dark-mode-toggle" class="theme-toggle" type="button" aria-label="Switch between light and dark">
+                <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false">
+                    <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M8 1.75a6.25 6.25 0 0 0 0 12.5z" fill="currentColor"/>
+                </svg>
+            </button>
+            {{ end }}
+        </div>
+    </div>
+</header>

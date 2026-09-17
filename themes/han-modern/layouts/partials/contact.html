@@ -1,0 +1,10 @@
+{{- /* Every link here leaves the site, so the handle is the label. */ -}}
+{{ with .Site.Params.social }}
+<footer class="contact">
+    <div class="shell">
+        {{ range . }}
+        <a class="contact-link" href="{{ .url }}"{{ if not (hasPrefix .url "mailto:") }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .handle | default .name }}</a>
+        {{ end }}
+    </div>
+</footer>
+{{ end }}

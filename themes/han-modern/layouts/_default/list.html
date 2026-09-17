@@ -1,22 +1,22 @@
-{{ define "content" }}
-<section class="container">
-  <div class="list">
-    <h1>{{ .Title }}</h1>
-    
-    {{ with .Content }}
-    <div>{{ . }}</div>
-    {{ end }}
-    
-    <ul>
-      {{ range .Paginator.Pages }}
-      <li>
-        <span class="date">{{ .Date.Format (.Site.Params.dateFormatList | default "January 2, 2006") }}</span>
-        <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </li>
-      {{ end }}
-    </ul>
-    
-    {{ template "_internal/pagination.html" . }}
-  </div>
+{{ define "main" }}
+<section class="stage stage-top">
+    <div class="shell">
+        <h1 class="page-title">{{ .Title }}<span class="hero-dot">.</span></h1>
+
+        {{ with .Content }}
+        <div class="page-lede">{{ . }}</div>
+        {{ end }}
+
+        <ul class="list">
+            {{ range .Paginator.Pages }}
+            <li>
+                <span class="date">{{ .Date.Format (.Site.Params.dateFormatList | default "2 January 2006") }}</span>
+                <a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
+
+        {{ template "_internal/pagination.html" . }}
+    </div>
 </section>
 {{ end }}

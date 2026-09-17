@@ -1,9 +1,11 @@
-{{ define "content" }}
-<section class="container centered">
-  <div class="error">
-    <h1>404</h1>
-    <h2>{{ .Site.Params.error404 | default "Page Not Found" }}</h2>
-    <p><a href="{{ "/" | relLangURL }}">Go back home</a></p>
-  </div>
+{{ define "main" }}
+<section class="stage">
+    <div class="shell">
+        <h1 class="page-title">404<span class="hero-dot">.</span></h1>
+        <div class="page-lede">
+            <p>{{ .Site.Params.error404 | default "That page is not here. It may have moved, or it may never have existed." }}</p>
+        </div>
+        <a class="say-link" href="{{ "/" | relURL }}">Back to the homepage</a>
+    </div>
 </section>
 {{ end }}
