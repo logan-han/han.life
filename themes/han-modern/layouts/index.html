@@ -38,12 +38,7 @@
                     </span>
                     <span class="contact-link-row">
                         <span class="contact-link-handle">
-                            {{ if eq $s.name "Github" }}logan-han
-                            {{ else if eq $s.name "LinkedIn" }}in/loganhan
-                            {{ else if eq $s.name "Blog" }}blog.han.life
-                            {{ else if eq $s.name "Email" }}logan@thisdomain
-                            {{ else }}{{ $s.url }}
-                            {{ end }}
+                            {{ $s.handle | default $s.url }}
                         </span>
                         <span class="contact-link-arrow" aria-hidden="true">↗</span>
                     </span>

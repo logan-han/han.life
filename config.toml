@@ -71,12 +71,12 @@ enableInlineShortcodes = true
   # Google Analytics
   googleAnalytics = "G-CVEBFCXFSW"
 
-  # Social configuration (using Hugo Coder style)
+  # Contact cards on the homepage; each card shows its handle, or the url when it has none.
   social = [
-    {name = "Github", icon = "fab fa-github", weight = 1, url = "https://github.com/logan-han"},
-    {name = "LinkedIn", icon = "fab fa-linkedin", weight = 2, url = "https://www.linkedin.com/in/loganhan"},
-    {name = "Blog", icon = "fas fa-rss", weight = 3, url = "https://blog.han.life"},
-    {name = "Email", icon = "fas fa-envelope", weight = 4, url = "mailto:logan@thisdomain"},
+    {name = "Github", handle = "logan-han", url = "https://github.com/logan-han"},
+    {name = "LinkedIn", handle = "in/loganhan", url = "https://www.linkedin.com/in/loganhan"},
+    {name = "Blog", handle = "blog.han.life", url = "https://blog.han.life"},
+    {name = "Email", handle = "logan@thisdomain", url = "mailto:logan@thisdomain"},
   ]
 
 # Projects listed on /projects/. Anything reachable on the web belongs here;
