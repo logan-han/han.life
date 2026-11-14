@@ -17,6 +17,8 @@
     --hair: rgba(13, 13, 13, 0.10);
     --hair-strong: rgba(13, 13, 13, 0.18);
     --shadow: 0 1px 0 rgba(0, 0, 0, 0.02), 0 8px 24px -12px rgba(0, 0, 0, 0.08);
+    --tint: rgba(13, 13, 13, 0.025);
+    --grid-opacity: 0.7;
 
     --font-sans: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -33,6 +35,8 @@ body.colorscheme-dark {
     --hair: rgba(236, 236, 234, 0.10);
     --hair-strong: rgba(236, 236, 234, 0.18);
     --shadow: none;
+    --tint: rgba(236, 236, 234, 0.04);
+    --grid-opacity: 0.6;
 }
 
 /* auto follows system */
@@ -45,6 +49,8 @@ body.colorscheme-dark {
         --hair: rgba(236, 236, 234, 0.10);
         --hair-strong: rgba(236, 236, 234, 0.18);
         --shadow: none;
+        --tint: rgba(236, 236, 234, 0.04);
+        --grid-opacity: 0.6;
     }
 }
 
@@ -99,12 +105,7 @@ body {
     background-size: 64px 64px;
     -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 30%, transparent 100%);
             mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 30%, transparent 100%);
-    opacity: 0.7;
-}
-
-body.colorscheme-dark .hero-grid { opacity: 0.6; }
-@media (prefers-color-scheme: dark) {
-    body.colorscheme-auto .hero-grid { opacity: 0.6; }
+    opacity: var(--grid-opacity);
 }
 
 /* meta bar */
@@ -251,16 +252,7 @@ body.colorscheme-dark .hero-grid { opacity: 0.6; }
 .contact-link:first-child { border-left: none; }
 
 .contact-link:hover {
-    background: rgba(13, 13, 13, 0.025);
-}
-
-body.colorscheme-dark .contact-link:hover {
-    background: rgba(236, 236, 234, 0.04);
-}
-@media (prefers-color-scheme: dark) {
-    body.colorscheme-auto .contact-link:hover {
-        background: rgba(236, 236, 234, 0.04);
-    }
+    background: var(--tint);
 }
 
 .contact-link-label {
@@ -344,16 +336,7 @@ body.colorscheme-dark .contact-link:hover {
 }
 
 .project:hover {
-    background-image: linear-gradient(rgba(13, 13, 13, 0.025), rgba(13, 13, 13, 0.025));
-}
-
-body.colorscheme-dark .project:hover {
-    background-image: linear-gradient(rgba(236, 236, 234, 0.04), rgba(236, 236, 234, 0.04));
-}
-@media (prefers-color-scheme: dark) {
-    body.colorscheme-auto .project:hover {
-        background-image: linear-gradient(rgba(236, 236, 234, 0.04), rgba(236, 236, 234, 0.04));
-    }
+    background-image: linear-gradient(var(--tint), var(--tint));
 }
 
 .project-label {
