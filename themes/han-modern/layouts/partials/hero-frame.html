@@ -1,0 +1,8 @@
+{{- /* Grid backdrop and top bar shared by the hero pages. Pass the page: nav.html
+       uses it to mark the current link. */ -}}
+<div class="hero-grid" aria-hidden="true"></div>
+
+<div class="hero-meta">
+    <span class="hero-meta-left">han.life</span>
+    {{ partial "nav.html" . }}
+</div>
