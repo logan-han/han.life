@@ -425,19 +425,6 @@ body.colorscheme-dark .project:hover {
 .project-host:hover,
 .project-src:hover { color: var(--accent); border-color: var(--accent); }
 
-/* footer line */
-.hero-foot {
-    margin-top: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--dim);
-}
-
 /* ============= color scheme toggle (kept) ============= */
 .float-container {
     position: fixed;
@@ -486,9 +473,6 @@ body.colorscheme-dark .project:hover {
     color: var(--fg);
     margin: 0 0 12px;
 }
-
-.post-title .hero-dot,
-.list h1 .hero-dot { color: var(--accent); }
 
 .post-meta {
     display: flex;
@@ -643,66 +627,6 @@ body.colorscheme-dark .project:hover {
 
 .list .title:hover { color: var(--accent); }
 
-/* ============= 404 ============= */
-.error-page {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 32px;
-}
-
-.error-code {
-    font-size: clamp(96px, 18vw, 220px);
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    line-height: 0.9;
-    color: var(--fg);
-}
-
-.error-code::after {
-    content: ".";
-    color: var(--accent);
-}
-
-.error-message {
-    margin-top: 16px;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--fg);
-}
-
-.error-description {
-    margin: 12px auto 32px;
-    max-width: 460px;
-    color: var(--dim);
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.back-home-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: transparent;
-    color: var(--fg);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    border: 1px solid var(--hair);
-    border-radius: 999px;
-    transition: var(--transition);
-}
-
-.back-home-btn:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
 /* ============= reduced motion ============= */
 @media (prefers-reduced-motion: reduce) {
     * { transition-duration: 0.01ms !important; }
@@ -723,6 +647,5 @@ body.colorscheme-dark .project:hover {
     .contact-link:nth-child(n+3) { border-top: 1px solid var(--hair); }
     .projects { margin-top: 36px; }
     .project { flex-basis: 100%; padding: 16px 18px; }
-    .hero-foot { font-size: 9px; flex-direction: column; gap: 8px; align-items: flex-start; }
     .float-container { bottom: 16px; right: 16px; }
 }
