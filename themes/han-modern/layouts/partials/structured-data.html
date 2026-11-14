@@ -14,7 +14,7 @@
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "url": "{{ .Site.BaseURL }}",
-  "inLanguage": "{{ .Site.Language.LanguageCode | default "en" }}",
+  "inLanguage": "{{ .Site.Language.Locale | default "en" }}",
   "mainEntity": {
     "@type": "Person",
     "name": {{ .Site.Params.author | jsonify | safeJS }},

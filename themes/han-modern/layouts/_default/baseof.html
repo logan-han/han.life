@@ -4,7 +4,7 @@
 {{- $description := or .Description .Site.Params.description "" }}
 {{- $shareImage := .Site.Params.ogImage | default .Site.Params.avatar }}
 {{- $darkCapable := or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
-<html lang="{{ .Site.Language.LanguageCode | default "en" }}">
+<html lang="{{ .Site.Language.Locale | default "en" }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
