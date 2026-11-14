@@ -1,15 +1,20 @@
 <!DOCTYPE html>
+{{- $title := .Site.Title }}
+{{- if not .IsHome }}{{ $title = printf "%s | %s" .Title .Site.Title }}{{ end }}
+{{- $description := or .Description .Site.Params.description "" }}
+{{- $shareImage := .Site.Params.ogImage | default .Site.Params.avatar }}
+{{- $darkCapable := or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
 <html lang="{{ .Site.Language.LanguageCode | default "en" }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ else }}{{ .Site.Params.author }} - Personal Website{{ end }}{{ end }}">
+    <meta name="description" content="{{ with $description }}{{ . }}{{ else }}{{ .Site.Params.author }} - Personal Website{{ end }}">
     <meta name="author" content="{{ .Site.Params.author }}">
     <meta name="keywords" content="{{ .Site.Params.keywords }}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ .Permalink }}">
     
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <title>{{ $title }}</title>
     
     <!-- Favicon -->
     {{ with .Site.Params.faviconSVG }}
@@ -32,18 +37,18 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-    {{ if or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
+    {{ if $darkCapable }}
     <link rel="stylesheet" href="{{ "css/coder-dark-simple.css" | relURL }}">
     {{ end }}
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
-    <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:locale" content="{{ .Site.Params.ogLocale | default "en_US" }}">
-    {{ with .Site.Params.ogImage | default .Site.Params.avatar }}
+    {{ with $shareImage }}
     <meta property="og:image" content="{{ . | absURL }}">
     <meta property="og:image:alt" content="{{ $.Site.Params.author }}">
     {{ end }}
@@ -51,9 +56,9 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ .Permalink }}">
-    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
-    <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
-    {{ with .Site.Params.ogImage | default .Site.Params.avatar }}
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    {{ with $shareImage }}
     <meta name="twitter:image" content="{{ . | absURL }}">
     <meta name="twitter:image:alt" content="{{ $.Site.Params.author }}">
     {{ end }}
@@ -104,7 +109,7 @@
 
     <!-- Scripts -->
     <script src="{{ "js/main.js" | relURL }}"></script>
-    {{ if or (eq .Site.Params.colorScheme "auto") (eq .Site.Params.colorScheme "dark") }}
+    {{ if $darkCapable }}
     <script src="{{ "js/coder.js" | relURL }}"></script>
     {{ end }}
 </body>
